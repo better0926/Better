@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<div class="box1">
+		<input type="checkbox" id="all"><label for="all" class="all">全选</label>
+	</div>
+	<div class="box2">
+		<input type="checkbox" class="checkbox" id="a1">
+		<label for="a1">单选</label>
+		<input type="checkbox" class="checkbox" id="a2">
+		<label for="a2">单选</label>
+		<input type="checkbox" class="checkbox" id="a3">
+		<label for="a3">单选</label>
+		<input type="checkbox" class="checkbox" id="a4">
+		<label for="a4">单选</label>
+		<input type="checkbox" class="checkbox" id="a5">
+		<label for="a5">单选</label>
+	</div>
+	<script>
+		$(function() {
+			var all = $("#checked-all");
+			$(".checkall").on("click","#checked-all",".checked-all",function(){
+				if(all.prop('checked')){
+					$(".inpt").each(function(index, el) {
+						$(".inpt").prop('checked', all.prop('checked'))
+					});
+				}else{
+					$(".inpt").each(function(index, el) {
+						$(".inpt").prop('checked', false)
+					});
+				}
+			});
+			$(".box2").on('click',".checkbox","label",function(){
+				var CheckedLength = $("input[type='checkbox']:checked").length
+				var CheckboxLength = $(".checkbox").length;
+				if(CheckedLength<CheckboxLength){
+					$("#all").prop('checked', false);
+				}else{
+					$("#all").prop('checked', true);
+				}
+		});// 
+
+
+			var all = $("#all");
+			$(".box1").on("click","#all",".all",function(){
+				if(all.prop('checked')){
+					$(".checkbox").each(function(index, el) {
+						$(".checkbox").prop('checked', all.prop('checked'))
+					});
+				}else{
+					$(".checkbox").each(function(index, el) {
+						$(".checkbox").prop('checked', false)
+					});
+				}
+			})
+			$(".box2").on('click',".checkbox","label",function(){
+				var CheckedLength = $("input[type='checkbox']:checked").length
+				var CheckboxLength = $(".checkbox").length;
+				if(CheckedLength<CheckboxLength){
+					$("#all").prop('checked', false);
+				}else{
+					$("#all").prop('checked', true);
+				}
+			});// 
+		});
+	</script>
+</body>
+</html>

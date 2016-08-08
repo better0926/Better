@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+		.demo li{line-height: 30px;border-bottom: 1px solid #000;}
+		.demo li a{padding: 0 20px;}
+	</style>
+</head>
+<body>
+	<ul class="demo">
+		<li>001 
+			<a href="#" class="up">上移</a>
+			<a href="#" class="down">下移</a>
+			<a href="#" class="top">置顶</a>
+			<a href="#" class="bottom">置底</a>
+		</li>
+		<li>002 
+			<a href="#" class="up">上移</a>
+			<a href="#" class="down">下移</a>
+			<a href="#" class="top">置顶</a>
+			<a href="#" class="bottom">置底</a>
+		</li>
+		<li>003 
+			<a href="#" class="up">上移</a>
+			<a href="#" class="down">下移</a>
+			<a href="#" class="top">置顶</a>
+			<a href="#" class="bottom">置底</a>
+		</li>
+		<li>004 
+			<a href="#" class="up">上移</a>
+			<a href="#" class="down">下移</a>
+			<a href="#" class="top">置顶</a>
+			<a href="#" class="bottom">置底</a>
+		</li>
+		
+	</ul>
+	<script>
+		//var max = (a > b)? a : b; 条件运算符，输出最大值，如果a>b,则输出a;如果a>b为false,则输出b;
+		$(".demo").on('click', 'a', function(event) {
+			event.preventDefault; //取消事件的默认动作
+			var parent=$(this).parent();
+			var parents=$(this).parents(".demo");
+			var len=parents.children().length;
+			if(($(this).is(".up") || $(this).is(".top")) && parent.index()==0){
+				alert("已经置顶！");
+				return false;
+			}else if(($(this).is(".down") || $(this).is(".bottom")) && parent.index()==len-1){
+				alert("已经置底！");
+				return false;
+			}
+			switch (true) {
+				case $(this).is(".up"):
+				var prev = parent.prev();
+				parent.insertBefore(prev);
+				break;
+				case $(this).is(".down"):
+				var next = parent.next();
+				parent.insertAfter(next);
+				break;
+				case $(this).is(".top"):
+				parents.prepend(parent);
+				break;
+				case $(this).is(".bottom"):
+				parents.append(parent);
+				break;
+			}
+			alert("操作完成！！");
+		});
+	</script>
+</body>
+</html>

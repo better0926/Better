@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="1.html" method='get' id='xx'>
+
+		<input name="search_btn" class="inputtxt" placeholder="关键字搜索" type="text">
+
+		<input type="text" name="">
+
+
+	</form>
+
+	<script>
+		function init() {
+			document.getElementsByTagName('input')[0].onkeydown=function(e){
+				var a=e||window.event;
+				if(a.preventDefault){
+					a.preventDefault();
+				}else{
+					a.returnValue=false;
+				}
+			}
+		}
+		init();
+	</script>
+</body>
+</html>

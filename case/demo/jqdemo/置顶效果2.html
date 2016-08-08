@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<input id="number" type="hidden" value="1,2,3,4,5,6,7">
+	<ul>
+		<li><a href="javascript:(0)">NO.1</a>这是一条神奇的天路1</li>
+		<li><a href="javascript:(0)">NO.2</a>这是一条神奇的天路2</li>
+		<li><a href="javascript:(0)">NO.3</a>这是一条神奇的天路3</li>
+		<li><a href="javascript:(0)">NO.4</a>这是一条神奇的天路4</li>
+		<li><a href="javascript:(0)">NO.5</a>这是一条神奇的天路5</li>
+		<li><a href="javascript:(0)">NO.6</a>这是一条神奇的天路6</li>
+		<li><a href="javascript:(0)">NO.7</a>这是一条神奇的天路7</li>
+	</ul>
+	<a href="#" id="aa" class="al">我是文字</a>
+	<script>
+		$(function(){
+			var new_array= [];
+			$("ul li a").on("click",function(){
+				$("ul").prepend($(this).parent()); //点击a时，将this的父级追加到ul中的最前面
+				console.log($(this).parent());
+				new_array.length = 0;
+				$("ul li").each(function(index, element) {
+					new_array.push($(this).attr("id"));//push结果是undefined
+				});
+				$("#number").val(new_array.join());
+			});
+			$("#aa").click(function(){
+				console.log(this.className)
+			})
+		})
+	</script>
+</body>
+</html>

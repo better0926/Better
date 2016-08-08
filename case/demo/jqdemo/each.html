@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<!-- <button class="btn btn-primary rightbtn" type="button">确认修改</button>
+<script type="text/javascript" language="javascript"> 
+	$('.rightbtn').click(function(){
+		alert('测试')
+	});
+ 	//回车提交事件
+ 	$("body").keydown(function() {
+        if (event.keyCode == "13") {//keyCode=13是回车键
+            $('.rightbtn').click();
+        }
+    });
+</script> -->
+<script type="text/javascript">
+	$(function(){
+		//下面提一下jQuery的each方法的几种常用的用法
+		var arr = [ "one", "two", "three", "four"];
+		var jsonData = {};
+		var array = []
+		/*$.each(arr, function(){
+			jsonData = JSON.stringify({arr});
+		});*/
+
+		//其实arr1为一个二维数组，item相当于取每一个一维数组，
+		//item[0]相对于取每一个一维数组里的第一个值
+		var arr1 = [[1, 4, 3], [4, 6, 6], [7, 20, 9]]
+		/*$.each(arr1, function(i, item){
+			var Item = (item[0]);
+			array.push(Item)
+		})
+		jsonData = JSON.stringify({"Data":array})*/
+
+		var obj = { one:1, two:2, three:3, four:4};
+		$.each(obj, function(key, val) {
+			alert(obj[key]);//输出1,2,3,4
+			//alert(key) //输出one,two,three,four
+			//var obj1 = (obj[key]); //输出1,2,3,4
+			array.push(obj[key])
+		});
+		jsonData = JSON.stringify({array})
+		console.log(jsonData)
+
+
+		/*var obj = { one:1, two:2, three:3};      
+		$.each(obj, function(key, val) {      
+			alert(key);   
+			//alert(val);  //等同于   alert(obj[key]) 
+		});   */
+	})
+</script>
+</body>
+</html>

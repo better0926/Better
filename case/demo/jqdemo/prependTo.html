@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src = "http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<p>I would like to say: </p>
+	<em>aaaaaaa</em>
+	<div id="foo">
+		<span>11111</span>
+		<div class="s">222</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$("p").prependTo("#foo");
+			$("em").prependTo("#foo")
+		})
+	</script>
+</body>
+</html>

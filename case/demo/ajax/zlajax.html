@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src = "http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<button> tijiao </button>
+	<script type="text/javascript">
+		function ajaxWrap(ajaxData, callback) {
+			if (!ajaxData.data) ajaxData.data = {};
+			$.extend(ajaxData.data);
+			$.ajax(ajaxData).done(function (data) {
+				callback(data);
+			});
+		};
+		
+		
+		$("button").on("click",function(){
+			var ids = 1;
+			var names = "LL";
+			var Show = true;
+			ajaxWrap({
+				url : "http://hh.houtaia.com/app-web/api-add",//后台告诉的
+				type : "post",
+				dataType : "json" ,
+				data : {
+					id : ids, //后台告诉的
+					name : names, // 后台告诉的
+					isShow : Show //后台告诉的
+				}
+
+			},function(data){ //后台告诉的
+				if(data.code == "2000"){ // 后台告诉的
+
+					/**
+					 data = {
+						code : 2000,
+						data{
+							id : 111,
+							name : 2223232,
+							isShow : 1
+						}
+					 }
+
+
+					 */
+					 $("div").html(data.data.id).prop("checked",data.data.flag);
+					}else{
+
+					}
+				})
+		})
+
+		/*(".ipt-check").click(function(event) {
+			if($(".ipt-check").prop("checked")){
+				var checked = true
+				ajaxWrap({
+					url : "http://hh.houtaia.com/app-web/api-add",//后台告诉的
+					type : "post",
+					dataType : "json" ,
+					data : {
+						id : checked, //后台告诉的
+					}
+
+				},function(data){ //后台告诉的
+					if(data.code == "2000"){ // 后台告诉的
+						$("div").html(data.data.id).prop("checked",data.data.flag);
+					}
+				})
+			}
+		});*/
+	</script>
+</body>
+</html>

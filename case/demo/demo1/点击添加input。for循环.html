@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.fullscreen{
+			display: none;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+		.popup{
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			width: 400px;
+			height: 200px;
+			padding: 20px;
+			background-color: #fff;
+		}
+		.show{
+			display: block !important;
+		}
+		.box1>input,
+		.box1>label{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<input type="checkbox" class="checkbox" id="a1">
+		<label for="a1">单选1</label>
+		<input type="checkbox" class="checkbox" id="a2">
+		<label for="a2">单选2</label>
+		<input type="checkbox" class="checkbox" id="a3">
+		<label for="a3">单选3</label>
+		<input type="checkbox" class="checkbox" id="a4">
+		<label for="a4">单选4</label>
+		<input type="checkbox" class="checkbox" id="a5">
+		<label for="a5">单选5</label>
+	</div>
+	<button class="open">展开</button>
+	<div class="fullscreen">
+		<div class="popup">
+			<div class="box2">
+				<input type="checkbox" id="all"><label for="all" class="all">全选</label>
+			</div>
+			<div class="box3">
+				<input type="checkbox" class="checkbox" id="b1">
+				<label for="b1">单选1</label>
+				<input type="checkbox" class="checkbox" id="b2">
+				<label for="b2">单选2</label>
+				<input type="checkbox" class="checkbox" id="b3">
+				<label for="b3">单选3</label>
+				<input type="checkbox" class="checkbox" id="b4">
+				<label for="b4">单选4</label>
+				<input type="checkbox" class="checkbox" id="b5">
+				<label for="b5">单选5</label>
+			</div>
+			<div class="btn-wrap">
+				<button class="btn-true">确定</button><button class="btn-close">取消</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(function() {
+			var all = $("#all");
+			$(".box2").on("click","#all",".all",function(){
+				if(all.prop('checked')){
+					$(".checkbox").each(function(index, el) {
+						$(".checkbox").prop('checked', all.prop('checked'))
+					});
+				}else{
+					$(".checkbox").each(function(index, el) {
+						$(".checkbox").prop('checked', false)
+					});
+				};
+			})
+
+			$(".box3").on('click',".checkbox","label",function(){
+				var CheckedLength = $("input[type='checkbox']:checked").length
+				var CheckboxLength = $(".checkbox").length;
+				if(CheckedLength<CheckboxLength){
+					$("#all").prop('checked', false);
+				}else{
+					$("#all").prop('checked', true);
+				};
+			});
+
+			$(".open").on('click',function(){
+				$(".fullscreen").show();
+			});
+			$(".btn-wrap").on('click',"button",function(){
+				$(".fullscreen").hide();
+			});
+
+
+			$(".btn-true").on("click",function() {
+				var checkbox = $(".box3").children('input[type="checkbox"]');
+				var checkbox1 = $(".box1").children('input[type="checkbox"]');
+				var label1= $(".box1").children("label");
+				var checkedArray = [];
+				checkbox1.hide();
+				label1.hide();
+				for(var i = 0 ; i < checkbox.length ; i++){
+					if($(checkbox[i]).prop('checked')){
+						checkedArray.push(i);
+					}
+				}
+				for(var j = 0 ; j < checkbox1.length ; j++){
+					for(var k = 0 ; k < checkedArray.length ; k++){
+						if(j == k){
+							$(checkbox1[j]).css('display', 'inline-block').prop('checked', true);
+						}
+					}
+				}
+				for(var l = 0 ; l < label1.length ; l++){
+					for(var m = 0 ; m < checkedArray.length ; m++){
+						if( l == m){
+							$(label1[m]).css('display', 'inline-block');
+						}
+					}
+				}
+			});
+		});
+		this.checkUl = $('<ul></ul>',{class:'check-list'}).appendTo(this.sectionItemSec);
+		this.checkLi = $('<li></li>',{class:'check-item clearfix'}).appendTo(this.checkUl);
+		this.modeInput = $('<input class="model fl" type="text" disabled="disabled" value="111" >').appendTo(this.checkLi);
+		this.modeVlue = $('<input type="hidden" class="model-value" value = "'+nIndex+'">').appendTo(this.checkLi)
+		this.modelDate = $('<input type="hidden" class="model-date" value = "">').appendTo(this.checkLi);
+		this.modeSort = $('<span></span>',{class:'model-sort fr'}).appendTo(this.checkLi);
+	</script>
+</body>
+</html>

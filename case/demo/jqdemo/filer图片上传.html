@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<div id="upload">
+		<form action="{:U('Index/uploadhandler')}"enctype="multipart/form-data"method="post"id="imgform"> 
+			<div id="imglist">
+			</div>
+			<div id="updiv">
+				<input type='file' name='photos' class="upfile">
+			</div>
+			<div class="path">
+				<input type="text" name="imgpaht" placeholder="图片路径">
+			</div>
+			<input type="submit"value="提交">
+		</form>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			var imgurl=[];
+			function createfile(){
+				$('#updiv').append("<input type='file' name='photos' class='upfile'>");
+			}
+			function showimg(url){
+				var img='<img src="'+url+'"/>';
+				$('#imglist').append(img);
+			}
+			function addfile(){
+				showimg($(this).val());
+				$(this).hide();
+				createfile();
+				$('.upfile').bind('change',addfile);
+			}
+			$('.upfile').bind('change',addfile);
+		})
+	</script>
+</body>
+</html>

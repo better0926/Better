@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style type="text/css">
+
+		.on{ font-weight:700; color:#FF33FF;}
+	</style>
+</head>
+<body>
+	输入你所要查找的文字，比如“浙江”：<input type="text" name="index" id="index">
+	<ul><li class="">我的名字叫愚人码头</li><li class="">我的个人博客网址是<a href="http://www.css88.com/">http://www.css88.com/</a></li><li class="">我的职业是前端开发工程师，其实我现在做美工！</li>
+
+		<li class="">浙江舟山人，在杭州工作</li>
+
+
+		<li class="">公司是浙江搜道网络技术有限公司，公司网址是<a href="http://www.sodao.com">http://www.sodao.com</a></li>
+		<li class="">前端开发的主要工作职责是开发高性能的客户端页面</li>
+		<li class="">前端开发的技能要（X）HTML，CSS，javascript</li>
+	</ul>
+
+	<button>Change colors</button>
+	<span></span> 
+	<div></div> 
+	<div></div>
+
+	<div></div> 
+	<div></div>
+	<div id="stop">Stop here</div> 
+	<div></div>
+
+	<div></div>
+	<div></div>
+
+
+	<script type="text/javascript">
+		$(function(){
+			$("div").each(function (index, domEle) { 
+				// domEle == this 
+				$(domEle).css("backgroundColor", "red");  
+				if ($(this).is("#stop")) { 
+					$("span").text("Stopped at div index #" + index); 
+					return false; 
+				} 
+			});
+			//键盘按键弹起时执行
+			$('#index').keyup(function(){
+				var index = $.trim($('#index').val().toString());//去掉两头空格
+				if(index == ''){
+					$('li').removeClass('on');return false;
+				}
+				var parent = $('ul');
+				$('li').removeClass('on');
+				//选择包含文本框值的所有加上focus类样式，并把它（们）移到ul的最前面
+				$("li:contains('" + index + "')").prependTo(parent).addClass('on');
+			});
+		});
+//-->
+</script>
+</body>
+</html>

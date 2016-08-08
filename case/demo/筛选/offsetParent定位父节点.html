@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src = "http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        .wrap{
+            background: green;
+            width:300px;
+            height: 300px;
+        }
+        .box{
+            width: 200px;
+            position: absolute;
+            top:100px;
+            left:100px;
+            border: 1px solid #000;
+        }
+        .wrap-item{
+            background-color: pink;
+            margin:50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <div class="wrap-item">
+                <p class="txt">点击按钮可以设置本段落的最近的父（祖先）元素的背景色</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn">点击这里</button>
+    <script type="text/javascript">
+        $(function(){
+            $(".btn").click(function(){
+                //设置最近的祖先定位元素的背景颜色,
+                var a = $(".txt").offsetParent().css("background" , "red");
+                console.log(a)
+            });
+        });
+    </script>
+</body>
+</html>

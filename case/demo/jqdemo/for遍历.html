@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style type="text/css">
+		body{
+			font-size: 16px;
+			font-family: "微软雅黑";
+		}
+		table{
+			border:1px solid #999;
+			border-top: 0;
+			border-left: 0;
+		}
+		th,td{
+			width: 40px;
+			text-align: center;
+			border:1px solid #999;
+			border-bottom: 0;
+			border-right: 0;
+		}
+		th{
+			color:#1a4773;
+		}
+		td{
+			font-size: 14px;
+		}
+		.Batch{
+			cursor:pointer;
+			margin-top: 10px;
+			border:1px solid #999;
+			background:#999;
+			height:24px;
+			color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<table cellpadding="0" cellspacing="0">
+		<tr class="title">
+			<th class="check-all">
+				<input type="checkbox" check="check" id="all">
+				<label for="all">全选</label>
+			</th>
+			<th class="numId">证件号</th>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>性别</th>
+			<th>专业</th>
+		</tr>
+		<tr class="content">
+			<td class="Single"><input type="checkbox" name="test" check="check"></td>
+			<td class="number">1</td>
+			<td class="nameId">张三</td>
+			<td>21</td>
+			<td>男</td>
+			<td>软件</td>
+		</tr>
+		<tr class="content">
+			<td class="Single"><input type="checkbox" name="test" check="check"></td>
+			<td class="number">2</td>
+			<td class="nameId">李四</td>
+			<td>22</td>
+			<td>男</td>
+			<td>网络</td>
+		</tr>
+		<tr class="content">
+			<td class="Single"><input type="checkbox" name="test" check="check"></td>
+			<td class="number">3</td>
+			<td class="nameId">王二</td>
+			<td>23</td>
+			<td>男</td>
+			<td>科学</td>
+		</tr>
+		<tr class="content">
+			<td class="Single"><input type="checkbox" name="test" check="check"></td>
+			<td class="number">4</td>
+			<td class="nameId">麻子</td>
+			<td>24</td>
+			<td>男</td>
+			<td>管理</td>
+		</tr>
+		<tr class="content">
+			<td class="Single"><input type="checkbox" name="test" check="check"></td>
+			<td class="number">5</td>
+			<td class="nameId">大神</td>
+			<td>25</td>
+			<td>男</td>
+			<td>会计</td>
+		</tr>
+		<tr class="content">
+			<td class="Single"><input type="checkbox" name="test" check="check"></td>
+			<td class="number">6</td>
+			<td class="nameId">菜鸟</td>
+			<td>26</td>
+			<td>男</td>
+			<td>软件</td>
+		</tr>
+		<tr class="content">
+			<td class="Single"><input type="checkbox" name="test" check="check"></td>
+			<td class="number">7</td>
+			<td class="nameId">书生</td>
+			<td>27</td>
+			<td>男</td>
+			<td>软件</td>
+		</tr>
+	</table>
+	<button type="button" class="Batch">批量删除</button>
+	<script type="text/javascript">
+		$(function(){
+			//全选
+			var checkAll = $("#all");
+			$(".check-all").on("click" ,"#all" ,"label" ,function(){
+				$(".Single input[name='test']").each(function(index, el) {
+					$(".Single input[name='test']").prop("checked",checkAll.prop("checked"))
+				})
+			});
+			//取消全选
+			$(".Single").on("click" ,"input" ,function(){
+				var checkedLen = $(".Single input[name='test']:checked").length;
+				var checkboxLen = $(".Single input[name='test']").length;
+				if(checkedLen<checkboxLen){
+					$("#all").prop("checked" , false)
+				}else{
+					$("#all").prop("checked" , true)
+				}
+			});
+
+		/*	//获取信息 方法一
+			$(".Batch").click(function(){
+				var trContent = $(".content") //获取tr
+				var data ={};
+				var array = [];
+				for(var i = 0 ; i < trContent.length ; i++){
+					var conInfo = $(trContent[i]);
+					var iptbox = conInfo.find("input[name='test']:checkbox");
+					if(iptbox.prop("checked")){
+						var nameId =conInfo.children(".nameId").html();
+						var number = conInfo.children(".number").html();
+						data = {
+							name : nameId,
+							number : number,
+						}
+						array.push(data)
+					}
+				}
+			})
+			*/
+			//获取信息 方法二
+			$(".Batch").click(function(){
+				var trContent = $(".content") //获取tr
+				var data ={};
+				var dataObj = {
+					array : []
+				}
+				for(var i = 0 ; i < trContent.length ; i++){
+					var conInfo = $(trContent[i]);
+					var iptbox = conInfo.find("input[name='test']:checkbox");
+					if(iptbox.prop("checked")){
+						var nameId =conInfo.children(".nameId").html();
+						var number = conInfo.children(".number").html();
+						data = {
+							name : nameId,
+							number : number,
+						}
+						dataObj.array.push(data)
+					}
+				}
+				console.log(dataObj)
+			})
+		})
+	</script>
+</body>
+</html>

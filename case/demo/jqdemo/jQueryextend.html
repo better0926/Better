@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		$(function(){
+			//合并 settings 和 options，修改并返回 settings
+			/*var settings = { validate: false, limit: 5, name: "foo" };
+			var options = { validate: true, name: "bar" };
+			jQuery.extend(settings, options);*/
+
+			//合并 defaults 和 options, 不修改 defaults
+			var empty = {};
+			var defaults = { validate: false, limit: 5, name: "foo" };
+			var options = { validate: true, name: "bar" };
+			var settings = jQuery.extend(empty, defaults, options); //合并defaults和options到empty，而且不修改defaults
+			console.log(settings)
+			console.log(empty)
+		})
+	</script>
+</body>
+</html>

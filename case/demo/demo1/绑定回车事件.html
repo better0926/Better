@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-2.2.3.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<div class="show">
+		<button id="btnSumit">测试</button>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$('#btnSumit').click(function() {
+				alert('测试')
+			});
+		//回车提交事件
+		$(".show").keydown(function() {
+			if (event.keyCode == "13") {//keyCode=13是回车键
+				$('#btnSumit').click();
+			}
+		});
+	});
+</script>
+</body>
+</html>

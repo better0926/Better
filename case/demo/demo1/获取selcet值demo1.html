@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
+</head>
+<body>
+	<select>
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+	</select>
+	<ul class="check-list">
+		<li class="clearfix">
+			<input class="model fl" type="text" disabled="disabled" value="模型一1">
+			<span class="model-sort fr"></span>
+		</li>
+		
+	</ul>
+	<script type="text/javascript">
+		$(function(){
+			var sel = $("select");
+			sel.change(function() {
+				var a = $(this).val();
+				console.log(a)
+			});
+		})
+	</script>
+</body>
+</html>

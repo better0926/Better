@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="friend_link">
+        <select onchange=mbar(this) name="select">
+            <option selected>友情链接</option>
+            <option value="http://www.163.com">163</option>
+            <option value="http://www.flash8.net/">flash8</option>
+            <option value="http://www.baidu.com">百度</option>
+            <option value="http://www.baidu.com">百度</option>
+            <option value="http://www.baidu.com">百度</option>
+            <option value="http://www.baidu.com">百度</option>
+        </select>
+
+    </div>
+
+    js代码：
+
+    <script type="text/javascript">
+
+        function mbar(sobj) {
+            var docurl =sobj.options[sobj.selectedIndex].value;
+            if (docurl != "") {
+               open(docurl,'_blank');
+               sobj.selectedIndex=0;
+               sobj.blur();
+           }
+       }
+
+   </script> 
+</body>
+</html>

@@ -1,0 +1,71 @@
+@charset "UTF-8";
+* {
+	margin: 0;
+	padding: 0; 
+}
+* {
+	list-style: none;
+}
+*{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+@mixin left($value:10px){
+	float: left;
+	margin-right: $value;
+}
+@mixin box{
+	width: 200px;
+	height: 200px;
+}
+@mixin clearfix{
+	*zoom: 1;
+	&:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+// css3 -webkit-,-moz-,-ms-,-o- 的前缀简写
+// 第一个参数为属性和值，第二个参数则是前缀
+@mixin prefix($map, $vendors:webkit moz ms o){
+	@each $prop, $value in $map{
+		@if $vendors {
+			@each $vendor in $vendors {
+				#{'-' + $vendor + '-' + $prop}:#{$value};
+			}
+		}
+		// Dump regular property anyway
+		#{$prop}:#{$value};
+	}
+}
+
+@mixin box-shadow($show...) {
+	-moz-box-shadow: $show;
+	-webkit-box-shadow: $show;
+	box-shadow: $show;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.box{
+	@include clearfix;
+}
+.show{
+	width:900px;
+	margin:50px auto;
+	border: 1px solid #000;
+	padding:10px;
+	@include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}
+.list{
+	display: inline-block;
+	@include left;
+}
+#select1{
+	@include box;
+}

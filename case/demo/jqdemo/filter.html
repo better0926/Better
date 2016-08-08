@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style type="text/css">
+		.big{font-size:18px}
+		.red{background:red}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="###">张三</a></li>
+		<li><a href="###">李四</a></li>
+		<li><a href="###">王五</a></li>
+		<li><a href="###">赵六</a></li>
+		<li><a href="###">张飞</a></li>
+		<li><a href="###">张1</a></li>
+		<li><a href="###">李2</a></li>
+		<li><a href="###">王3</a></li>
+		<li><a href="###">赵dfs</a></li>
+		<li><a href="###">ad飞</a></li>
+		<li><a href="###">hg三</a></li>
+		<li><a href="###">李lk</a></li>
+		<li><a href="###">da五</a></li>
+		<li><a href="###">赵mb</a></li>
+		<li><a href="###">dagbfj</a></li>
+	</ul>
+	<script type="text/javascript">
+		$(function(){
+        //filter(":contains('文字1'),:contains('文字2'):contains('文字3')")
+        $("ul li").filter(":contains('张三'),:contains('李四'),:contains('王五')").css("background","red");
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <form>
+        <label>Name:</label>
+        <input name="name" />
+        <fieldset>
+            <label>Newsletter:</label>
+            <input name="newsletter" />
+        </fieldset>
+    </form>
+    <input name="none" />
+    <script type="text/javascript">
+        $(function(){
+         var a = $("label + input")
+         console.log(a)
+     })
+ </script>
+</body>
+</html>

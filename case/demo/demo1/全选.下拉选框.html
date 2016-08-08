@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>jQuery实现CheckBox全选、全不选</title>
+    <script src="http://code.jquery.com/jquery-1.4.4.min.js" type="text/javascript"></script>    <script type="text/javascript">
+    function selectAll(){  
+        if ($("#SelectAll").attr("checked")) {  
+            $("input:checkbox").attr("checked", true);  
+        } else {  
+            $(":checkbox").attr("checked", false);  
+        }  
+    } 
+</script>
+
+</head>
+<body>
+    <input type="checkbox" id="SelectAll"  value="全选" onclick="selectAll();"/>  
+
+    <input type="checkbox" id="subcheck"  value="1" onclick="setSelectAll();"/>  
+    <input type="checkbox" id="subcheck"  value="2" onclick="setSelectAll();"/>  
+    <input type="checkbox" id="subcheck"  value="3" onclick="setSelectAll();"/>  
+    <input type="checkbox" id="subcheck"  value="4" onclick="setSelectAll();"/> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .btn {
+            width: 80px;
+            height: 30px;
+            background-color: green;
+        }
+    </style>
+    <script src="http://cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
+    <script type="text/javascript"> 
+        $(function () { 
+            $('#btn').click(function () { 
+                alert($('#s option:selected').val()); 
+            }) 
+        }) 
+    </script> 
+</head>
+<body> 
+    <select id="s" multiple="multiple"> 
+        <option value="1">商</option> 
+        <option value="2">炳</option> 
+        <option value="3">奇</option> 
+    </select> 
+    <input type="button" id="btn" value="获取" /><br /> 
+</body>
+
+
+
+
+
+<body>
+<div class="btn">
+</div>
+</body>
+<script src="http://cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
+<script>
+    $btn= $(".btn");//按钮
+    var aw=$btn.width();//按钮宽度
+    var is_on=true;//按钮状态
+    $btn.click(function () {
+        if(is_on){
+            $btn.stop().animate({width:"10px"},300);//动画，变成宽度10px
+            is_on=false;
+        }else{
+            $btn.stop().animate({width:aw},300);//动画，变回原来长度
+            is_on=true;
+        }
+    });
+</script>
+</html> -->
